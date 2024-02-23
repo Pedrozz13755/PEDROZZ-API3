@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>informações</title>
+</head>
+<style>
+        *{
+          margin: 0;
+        }
+        body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #333;
+      color: white;
+      overflow: hidden; 
+        }
+
+      .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Colocar o vídeo atrás do conteúdo */
+      overflow: hidden;
+    }
+    
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .content {
+      position: relative;
+      z-index: 1; /* Colocar o conteúdo na frente do vídeo */
+      
+    }
+body.dark-theme {
+background-color: black;
+}
+.dark-theme .video-container {
+  background-color: #444; /* Cor de fundo do contêiner de vídeo escuro */
+}
+
+.dark-theme .header {
+  background-color: #444; /* Cor de fundo do cabeçalho escuro */
+}
+
+        h1 {
+            
+        }
+        h3 {
+        
+        }
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: -100%; /* Start off hidden */
+            height: 100%;
+            width: 180px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .menu-container.show-menu {
+            left: 0; /* Show the menu when class 'show-menu' is added */
+        }
+
+        .menu-container button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .menu-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            display: block;
+            
+            
+        }
+        .header{
+            background-color: #333;
+            justify-content: space-between;
+            padding: 0 10%;
+            height: 3.5em;
+            margin: 0;
+            box-shadow: 1px 1px 4px black;
+        }
+        .menu-toggle.hide-menu {
+            display: none; /* Hide the menu toggle when class 'hide-menu' is added */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .video-container {
+            margin-left: 200px; /* to create space for the menu */
+            max-width: 99%;
+            margin: 20px auto;
+            margin: 15px;
+            background-color: #444;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            
+            box-shadow: 1px 1px 1px black;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-
+            color: black;
+            text-align: center;   
+            }
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-
+            color: black;
+        }
+        button[type="submit"] {
+            display: block;
+            margin-top: 10px; 
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button {
+            display: block;
+            margin-top: 10px; 
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+        .video-player-container {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        img {
+        width: 40%;
+        border-radius: 50%;
+        box-shadow: 0px 0px 23px 5px red;
+        }
+
+    </style>
+    
+</head>
+
+<body>
+    <div class="video-background">
+    <video autoplay muted loop>
+      <source src="https://telegra.ph/file/fd6a60ed330312ffaf313.mp4" type="video/mp4">
+     
+    </video>
+    </div>
+  <div class="menu-container" id="menu">
+        <span class="close-button" onclick="toggleMenu()">&#10006;</span>
+        <h3>Menu</h3><br><hr><br>
+        <button onclick="toggleDarkTheme()">Tema Escuro</button>
+        <button onclick="changeBackgroundColor()">Mudar Cor</button>
+    </div>
+    <div class="header">
+          <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    </div>
+    
+    <br>
+    <h1>INFORMAÇÕES DO USUÁRIO</h1>
+    <div class="video-container">
+    <center>
+    <img src="<%= user.ft %>">
+    </center>
+    
+    <br>
+    <center>
+    <form action="/edit/<%= user.username %>" method="post">
+    <label for="password">Nova Senha:</label>
+    <input type="password" id="password" placeholder="Senha atual: <%= user.password %>" name="password">
+    <label for="ft">Nova Foto:</label>
+    <input type="text" id="ft" placeholder="Exemplo: <%= user.ft %>" name="ft">
+    <center>
+    <button type="submit">   Salvar   </button>
+    </center>
+  </form>
+    </center>
+    </div>
+
+  <div class="tutotxt">
+<div class="ip">
+<div class="card">
+<div class="card-body">
+<h5 class="font-weight-bold text-danger text-uppercase"></h5>
+<h3 style="color: red;" class="font-weight-bold">INFORMAÇÕES DO USUÁRIO</h3>
+    <div class="video-container">
+    <center>
+    </center>
+    <h4>USER: <%= user.username %></h4>
+    <h4>REQUEST: <%= user.saldo %></h4>
+    <h4>KEY: <%= user.key %></h4>
+    <br>
+    
+  </form>
+    </center>
+    </div>
+</div>
+</div>
+</div>
+</div>
+  
+  <br></br>
+  <audio autoplay="true" src="https://c.top4top.io/m_2974euesy9.mp3">
+
+  </audio>
+    <script>
+        function toggleDarkTheme() {
+            const body = document.querySelector('body');
+            const card = document.querySelector('.video-container ');
+            const cabeca = document.querySelector('.header');
+            body.classList.toggle('dark-theme');
+            cabeca.classList.toggle('dark-theme');
+            card.classList.toggle('dark-theme');
+        }
+
+        function changeBackgroundColor() {
+            const newColor = prompt('Digite uma cor em formato hexadecimal (#RRGGBB) ou um nome de cor: (em inglês)');
+            const body = document.querySelector('body');
+            body.style.backgroundColor = newColor;
+        }
+
+        function mostrarSenha() {
+            const senhaDiv = document.getElementById('senhaDiv');
+            if (senhaDiv.style.display === 'none') {
+                senhaDiv.style.display = 'block';
+            } else {
+                senhaDiv.style.display = 'none';
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            menu.classList.toggle('show-menu');
+            menuToggle.classList.toggle('hide-menu');
+        }
+    </script>
+</body>
+</html>

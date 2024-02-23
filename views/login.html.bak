@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #310404 url(https://wallpaperaccess.com/full/8351171.gif) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      font-family: 'Barlow', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        div{
+            background-color: rgba(0, 0, 0, 0.9);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 80px;
+            border-radius: 15px;
+            color: #fff;
+        }
+        input{
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+        button{
+            background-color: dodgerblue;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            
+        }
+        button:hover{
+            background-color: deepskyblue;
+            cursor: pointer;
+        }
+        a{
+          color: red;
+        }
+    </style>
+  <script>
+  function logar() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    if (username == "Admin" && password == "1234") {
+      location.href = "docs.html";
+    }
+
+    if (username == "KevinMaster" && password == "Mj14141414") {
+      location.href = "docs.html";
+    }
+
+    if (username == "KazeDevID" && password == "Kaze123") {
+      location.href = "docs.html";
+    }
+
+    if (username == "DModZ" && password == "holapapu132") {
+      location.href = "docs.html";
+    }
+
+    if (username == "ts3010" && password == "1866") {
+      location.href = "docs.html";
+    }
+  }
+  </script>
+
+</head>
+<body>
+  
+  
+    <div>
+        <form action="/paginaPrincipal" method="post">
+        <h1>Login</h1>
+        <input type="text" placeholder="Insira o nome de Usuário" id="username" name="username" required><br>
+        <br><br>
+        <input type="password" placeholder="Insira Sua Senha" id="password" name="password" required>
+        <br><br>
+        <button>Enviar</button>
+        <p>nao tem uma conta? <a href="/new">Cadastre-se</a></p>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+</body>
+</html>
